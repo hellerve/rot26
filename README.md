@@ -16,7 +16,7 @@ Don’t.
 
 ## Usage
 
-The `ROT` module within [rot26.carp](/tree/master/rot26.carp) implements six
+The `ROT` module within [rot26.carp](/rot26.carp) implements six
 functions, three for encryption:
 
 ```clojure
