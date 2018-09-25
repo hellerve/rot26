@@ -1,0 +1,33 @@
+(defmodule ROT
+  (defn rot-chr [n]
+    (fn [c]
+      (let [a (Char.to-int \a)
+            A (Char.to-int \A)
+            chr (Char.to-int c)]
+        (cond
+          (Char.lower-case c)
+            (Char.from-int (+ a (mod (+ (- chr a) n) 26)))
+          (Char.upper-case c)
+            (Char.from-int (+ A (mod (+ (- chr A) n) 26)))
+          c))))
+
+  (defn rot [s n]
+    (String.from-chars &(Array.endo-map (rot-chr n) (String.chars s))))
+
+  (defn rot26 [s]
+    (rot s 26))
+
+  (defn rot13 [s]
+    (rot s 13))
+
+  ; what a clever isomorphism trick!
+  (defn unrot26 [s]
+    (rot26 s))
+
+  ; and another one!
+  (defn unrot13 [s]
+    (rot13 s))
+
+  (defn unrot [s n]
+    (rot s (- 26 n)))
+)

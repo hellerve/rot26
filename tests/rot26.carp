@@ -1,0 +1,39 @@
+(load "rot26.carp")
+(load "Test.carp")
+
+(use-all Test ROT)
+
+(defn main []
+  (with-test test
+    (assert-equal test
+                  "secure me!"
+                  &(ROT.rot26 "secure me!")
+                  "test that rot26 works"
+    )
+    (assert-equal test
+                  "frpher zr!"
+                  &(ROT.rot13 "secure me!")
+                  "test that rot13 works"
+    )
+    (assert-equal test
+                  "tfdvsf nf!"
+                  &(ROT.rot "secure me!" 1)
+                  "test that rot works"
+    )
+    (assert-equal test
+                  "secure me!"
+                  &(ROT.unrot26 "secure me!")
+                  "test that unrot26 works"
+    )
+    (assert-equal test
+                  "secure me!"
+                  &(ROT.unrot13 "frpher zr!")
+                  "test that unrot13 works"
+    )
+    (assert-equal test
+                  "secure me!"
+                  &(ROT.unrot "tfdvsf nf!" 1)
+                  "test that unrot works"
+    )
+  )
+)
