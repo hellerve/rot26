@@ -12,22 +12,17 @@
           c))))
 
   (defn rot [s n]
-    (String.from-chars &(Array.endo-map (rot-chr n) (String.chars s))))
+    (String.from-chars &(Array.endo-map &(rot-chr n) (String.chars s))))
 
-  (defn rot26 [s]
-    (rot s 26))
+  (defn rot26 [s] (rot s 26))
 
-  (defn rot13 [s]
-    (rot s 13))
+  (defn rot13 [s] (rot s 13))
 
   ; what a clever isomorphism trick!
-  (defn unrot26 [s]
-    (rot26 s))
+  (defn unrot26 [s] (rot26 s))
 
   ; and another one!
-  (defn unrot13 [s]
-    (rot13 s))
+  (defn unrot13 [s] (rot13 s))
 
-  (defn unrot [s n]
-    (rot s (- 26 n)))
+  (defn unrot [s n] (rot s (- 26 n)))
 )
